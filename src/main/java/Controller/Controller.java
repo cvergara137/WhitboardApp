@@ -9,24 +9,30 @@ import Model.Model;
 import View.View;
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.TextField;
+//import org.apache.logging.log4j.LogManager;
+import java.util.logging.Logger;
 import static javafx.application.ConditionalFeature.FXML;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.paint.*;
 
 /**
  *
  * @author cvcol
  */
 public class Controller {
+//    static final Logger logger = LogManager.getlogger(Controller.class);
     Model model; 
     View view; 
     
     public Controller() { 
+//        logger.error("");
         model = new Model(); 
         view = new View(this); 
         Controller controller = new Controller(model, view);
@@ -59,11 +65,13 @@ public class Controller {
         Platform.exit();
     
 } 
-    
+    //method for implementing GraphicsContext class 
     public void intialize() { 
-//        GraphicsContext gc = canvas.getGraphicsContext2D();
-    
-    
+        Graphics g = canvas.getGraphics();
+//        GrahpicsContext gc = canvas.getGraphicsContext2D();
+        
+        
+        
     
 }
 
