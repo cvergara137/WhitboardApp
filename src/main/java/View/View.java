@@ -13,14 +13,27 @@ import Controller.Controller;
  */
 public class View {
     private Controller controller;  
-   
+    private LoginFrameFX loginFX; 
 
     public View(Controller controller) {
         this.controller = controller; 
+        loginFX = new LoginFrameFX();
     }
 
     public Controller getController() {
         return controller;
+    }
+
+    public LoginFrameFX getLoginFX() {
+        return loginFX;
+    }
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    public void setLoginFX(LoginFrameFX loginFX) {
+        this.loginFX = loginFX;
     }
 
 
