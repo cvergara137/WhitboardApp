@@ -37,9 +37,9 @@ public class App extends Application {
 
         Scene scene = new Scene(root, 1300, 900);
 
-        primaryStage.setTitle("Welcome");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+//        primaryStage.setTitle("Welcome");
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
     }
     
     
