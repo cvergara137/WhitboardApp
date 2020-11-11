@@ -21,18 +21,15 @@ import javafx.stage.Stage;
  *
  * @author bret_
  */
-public class LoginFrameFX extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginFrameFXML.fxml"));
-
-
-        Scene scene = new Scene(root, 1300, 900);
-
-        primaryStage.setTitle("Welcome");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-}
+////public class LoginFrameFX extends Application {
+////
+////
+////
+////    public static void main(String[] args) {
+////        // TODO code application logic here
+////        Application.launch(args);
+////        System.out.println("Hello ");
+////
+////    }
+////    
+//}

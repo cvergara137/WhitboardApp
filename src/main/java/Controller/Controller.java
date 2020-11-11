@@ -33,61 +33,60 @@ public class Controller {
 //        logger.error("");
         model = new Model(); 
         view = new View(this); 
-        Controller controller = new Controller(model, view);
     } 
     
-    public Controller(Model model, View view) { 
-        this.model = model; 
-        this.view = view; 
-        
-
-    }
-    
-    @FXML 
-    private Canvas canvas; 
-    
-    @FXML 
-    private ColorPicker Color; 
-    
-    @FXML 
-    private TextField BrushSize; 
-    
-    @FXML 
-    private MenuItem Undo; 
-    
-    @FXML 
-    private Button Eraser; 
-    
-//    public void onSave() { 
-//        try { 
-//            Image snapshot = canvas.
-//        }
-    public void Exit() { 
-        Platform.exit();
-    
-} 
-    //method for implementing GraphicsContext class 
-    public void intialize() { 
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        
-        canvas.setOnMouseDragged(e -> { 
-            double size = Double.parseDouble(BrushSize.getText()); 
-            double x = e.getX() - size / 2; 
-            double y = e.getY() - size / 2; 
-            
-            if (Eraser.isPressed()) { 
-                gc.clearRect(y, y, size, size); 
-            } else { 
-                gc.setFill(Color.getValue()); 
-                gc.fillRect(y, y, size, size);
-                
-            }
-            
-        });
-        
-        
-        
-    
-}
+//    public Controller(Model model, View view) { 
+//        this.model = model; 
+//        this.view = view; 
+//        
+//
+//    }
+//    
+//    @FXML 
+//    private Canvas canvas; 
+//    
+//    @FXML 
+//    private ColorPicker Color; 
+//    
+//    @FXML 
+//    private TextField BrushSize; 
+//    
+//    @FXML 
+//    private MenuItem Undo; 
+//    
+//    @FXML 
+//    private Button Eraser; 
+//    
+////    public void onSave() { 
+////        try { 
+////            Image snapshot = canvas.
+////        }
+//    public void Exit() { 
+//        Platform.exit();
+//    
+//} 
+//    //method for implementing GraphicsContext class 
+//    public void intialize() { 
+//        GraphicsContext gc = canvas.getGraphicsContext2D();
+//        
+//        canvas.setOnMouseDragged(e -> { 
+//            double size = Double.parseDouble(BrushSize.getText()); 
+//            double x = e.getX() - size / 2; 
+//            double y = e.getY() - size / 2; 
+//            
+//            if (Eraser.isPressed()) { 
+//                gc.clearRect(y, y, size, size); 
+//            } else { 
+//                gc.setFill(Color.getValue()); 
+//                gc.fillRect(y, y, size, size);
+//                
+//            }
+//            
+//        });
+//        
+//        
+//        
+//    
+//}
 
 }
