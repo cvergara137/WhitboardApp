@@ -10,5 +10,4 @@ package Model;
  * @author cvcol
  */
 public class Model {
-    
 }

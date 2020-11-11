@@ -10,9 +10,11 @@ import java.awt.Color;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -22,6 +24,8 @@ import javafx.stage.Stage;
  * @author bret_
  */
 public class WhiteboardFX extends Application {
+    @FXML 
+    private Canvas Canvas;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -33,6 +37,8 @@ public class WhiteboardFX extends Application {
         primaryStage.setTitle("Whiteboard Application");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
     }
 
 }
