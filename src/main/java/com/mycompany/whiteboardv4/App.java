@@ -31,7 +31,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginFrameFXML.fxml"));
+        System.out.println(getClass().getResource("/fxml/LoginFrameXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginFrameXML.fxml"));
 
 
         Scene scene = new Scene(root, 1300, 900);
