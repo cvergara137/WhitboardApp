@@ -25,7 +25,7 @@ public class WhiteboardFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("WhiteboardFX.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/WhiteboardFXML.fxml"));
 
 
         Scene scene = new Scene(root, 1300, 900);
