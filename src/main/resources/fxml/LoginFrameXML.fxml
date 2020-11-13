@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="575.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Controller.Controller">
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="575.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
     <stylesheets>
         <URL value="@/styles/loginframexml.css" />
     </stylesheets>
@@ -17,7 +17,7 @@
       <Label layoutX="135.0" layoutY="292.0" text="Password:" />
       <PasswordField layoutX="219.0" layoutY="288.0" prefHeight="25.0" prefWidth="234.0" />
       <TextField layoutX="219.0" layoutY="171.0" prefHeight="25.0" prefWidth="234.0" />
-      <Label layoutX="202.0" layoutY="64.0" prefHeight="63.0" prefWidth="179.0" text="Login Screen" textAlignment="CENTER">
+      <Label layoutX="227.0" layoutY="67.0" prefHeight="63.0" prefWidth="179.0" text="Welcome!" textAlignment="CENTER">
          <font>
             <Font size="23.0" />
          </font>

@@ -21,22 +21,18 @@ import javafx.stage.Stage;
  *
  * @author bret_
  */
-//public class LoginFrameFX extends Application {
-//
-//    public void start(Stage primaryStage) throws Exception {
-//        System.out.println(getClass().getResource("/fxml/LoginFrameXML.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginFrameXML.fxml"));
-//
-//
-//        Scene scene = new Scene(root, 1300, 900);
-//    }
-//
-//    public static void main(String[] args) {
-//         // TODO code application logic here
-//        Application.launch(args);
-//        System.out.println("Hello ");
-//
-//    
-//    
-//}
-//}
+public class WhiteboardFX extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("WhiteboardFX.fxml"));
+
+
+        Scene scene = new Scene(root, 1300, 900);
+
+        primaryStage.setTitle("Whiteboard Application");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+}

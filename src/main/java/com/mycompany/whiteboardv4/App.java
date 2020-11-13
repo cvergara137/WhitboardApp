@@ -2,6 +2,7 @@ package com.mycompany.whiteboardv4;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,11 +36,12 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginFrameXML.fxml"));
 
 
-        Scene scene = new Scene(root, 1300, 900);
+        Scene scene = new Scene(root, 600, 600);
 
-//        primaryStage.setTitle("Welcome");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
+        primaryStage.setTitle("Login Screen");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        primaryStage.setOnCloseRequest(e -> Platform.exit());
     }
     
     
