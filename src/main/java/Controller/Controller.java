@@ -22,12 +22,15 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -35,97 +38,94 @@ import javafx.stage.Stage;
  */
 public class Controller {
 //    static final Logger logger = LogManager.getlogger(Controller.class);
-    Model model; 
-    View view; 
+
+    Model model;
+    View view;
     ArrayList<String> usernames = new ArrayList<String>();
     ArrayList<String> passwords = new ArrayList<String>();
-    
+
     String user1 = "test";
     String pw1 = "test";
-    
-    public Controller() { 
+
+    public Controller() {
 //        logger.error("");
-        model = new Model(); 
-        view = new View(this); 
-    } 
-    
-    public Controller(Model model, View view) { 
-        this.model = model; 
-        this.view = view;  
-        usernames.add(user1); 
+        model = new Model();
+        view = new View(this);
+    }
+
+    public Controller(Model model, View view) {
+        this.model = model;
+        this.view = view;
+        usernames.add(user1);
         passwords.add(pw1);
-        
+    }
+
+    @FXML
+    private Canvas canvas;
+
+    @FXML
+    private ColorPicker Color;
+
+    @FXML
+    private TextField BrushSize;
+
+    @FXML
+    private MenuItem Undo;
+
+    @FXML
+    private Button Eraser;
+
+    @FXML
+    private Button Login;
+
+    @FXML
+    private TextField username;
+
+    @FXML
+    private PasswordField password;
+
+    @FXML
+    public void LoginListener(ActionEvent event) throws IOException {
+        if (username.getText().contains(user1) && password.getText().contains(pw1)) {
+            System.out.println("Valid user");
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WhiteboardFXML.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+//            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Whiteboard");
+            stage.setScene(new Scene(root1));
+            stage.show();
+            stage.setOnCloseRequest(e -> Platform.exit());
+        } else {
+            System.out.println("Invalid user");
+        }
 
     }
-    
-    @FXML 
-    private Canvas canvas; 
-    
-    @FXML 
-    private ColorPicker Color; 
-    
-    @FXML 
-    private TextField BrushSize; 
-    
-    @FXML 
-    private MenuItem Undo; 
-    
-    @FXML 
-    private Button Eraser;  
-    
-    @FXML 
-    private Button Login;
-    
-    @FXML 
-    private TextField username; 
-    
-    @FXML 
-    private PasswordField password;
-    
-    @FXML 
-    public void LoginListener(ActionEvent event) { 
-//        if (username.getText().contains(user1)) { 
-            System.out.print("Valid user");
-//         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WhiteboardFXML.fxml"));
-//        } 
-//        else { 
-//            System.out.println("Invalid user");
-        }
-//        
-//    }
 //    
 //    public void onSave() { 
 //        try { 
 //            Image snapshot = canvas.
 //        } 
-//    public void loadWhiteBoardFX(Stage primaryStage) throws IOException { 
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/WhiteboardFXML.fxml"));
-//
-//
-//        Scene scene = new Scene(root, 1300, 900);
-//
-//        primaryStage.setTitle("Whiteboard Application");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-//    }
+
     //method for implementing GraphicsContext class 
-    public void intialize() { 
+
+    public void intialize() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        
-        canvas.setOnMouseDragged(e -> { 
-            double size = Double.parseDouble(BrushSize.getText()); 
-            double x = e.getX() - size / 2; 
-            double y = e.getY() - size / 2; 
-            
-            if (Eraser.isPressed()) { 
-                gc.clearRect(y, y, size, size); 
-            } else { 
-                gc.setFill(Color.getValue()); 
-                gc.fillRect(y, y, size, size);            
-            }       
-        });  
-} 
-    
+
+        canvas.setOnMouseDragged(e -> {
+            System.out.println("Test");
+            double size = Double.parseDouble(BrushSize.getText());
+            double x = e.getX() - size / 2;
+            double y = e.getY() - size / 2;
+
+            if (Eraser.isPressed()) {
+                gc.clearRect(x, y, size, size);
+            } else {
+                gc.setFill(Color.getValue());
+                gc.fillRect(x, y, size, size);
+            }
+        });
+    }
 
     public Model getModel() {
         return model;
@@ -205,6 +205,30 @@ public class Controller {
 
     public void setUndo(MenuItem Undo) {
         this.Undo = Undo;
+    }
+
+    public Button getLogin() {
+        return Login;
+    }
+
+    public void setLogin(Button Login) {
+        this.Login = Login;
+    }
+
+    public TextField getUsername() {
+        return username;
+    }
+
+    public void setUsername(TextField username) {
+        this.username = username;
+    }
+
+    public PasswordField getPassword() {
+        return password;
+    }
+
+    public void setPassword(PasswordField password) {
+        this.password = password;
     }
 
     public Button getEraser() {
