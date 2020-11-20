@@ -8,8 +8,7 @@ package Controller;
 import Model.Model;
 import View.View;
 import View.WhiteboardFX;
-import java.awt.MenuItem;
-import java.awt.TextField;
+import java.io.IOException;
 import java.util.ArrayList;
 //import org.apache.logging.log4j.LogManager;
 import java.util.logging.Logger;
@@ -17,12 +16,18 @@ import static javafx.application.ConditionalFeature.FXML;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.*;
+import javafx.stage.Stage;
 
 /**
  *
@@ -79,19 +84,30 @@ public class Controller {
     
     @FXML 
     public void LoginListener(ActionEvent event) { 
-        if (username.getText().contains(user1) && username.getText().contains(pw1)) { 
-            WhiteboardFX.launch(WhiteboardFX.class);
+//        if (username.getText().contains(user1)) { 
+            System.out.print("Valid user");
+//         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WhiteboardFXML.fxml"));
+//        } 
+//        else { 
+//            System.out.println("Invalid user");
         }
-    }
+//        
+//    }
 //    
 //    public void onSave() { 
 //        try { 
 //            Image snapshot = canvas.
-//        }
-    public void Exit() { 
-        Platform.exit();
-    
-} 
+//        } 
+//    public void loadWhiteBoardFX(Stage primaryStage) throws IOException { 
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/WhiteboardFXML.fxml"));
+//
+//
+//        Scene scene = new Scene(root, 1300, 900);
+//
+//        primaryStage.setTitle("Whiteboard Application");
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+//    }
     //method for implementing GraphicsContext class 
     public void intialize() { 
         GraphicsContext gc = canvas.getGraphicsContext2D();

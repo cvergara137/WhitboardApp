@@ -15,14 +15,14 @@
    <children>
       <Label layoutX="135.0" layoutY="175.0" prefHeight="17.0" prefWidth="74.0" text="Username:" />
       <Label layoutX="135.0" layoutY="292.0" text="Password:" />
-      <PasswordField fx:id="password"layoutX="219.0" layoutY="288.0" prefHeight="25.0" prefWidth="234.0" />
-      <TextField fx:id="username"layoutX="219.0" layoutY="171.0" prefHeight="25.0" prefWidth="234.0" />
+      <PasswordField fx:id="password" layoutX="219.0" layoutY="288.0" prefHeight="25.0" prefWidth="234.0" />
+      <TextField fx:id="username" layoutX="219.0" layoutY="171.0" prefHeight="25.0" prefWidth="234.0" />
       <Label layoutX="227.0" layoutY="67.0" prefHeight="63.0" prefWidth="179.0" text="Welcome!" textAlignment="CENTER">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Button fx:id="Submit"layoutX="149.0" layoutY="385.0" mnemonicParsing="false"prefHeight="49.0" prefWidth="106.0" text="Login" />
+      <Button fx:id="Submit" layoutX="149.0" layoutY="385.0" mnemonicParsing="false" onAction="#LoginListener" prefHeight="49.0" prefWidth="106.0" text="Login" />
       <Button layoutX="325.0" layoutY="385.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="112.0" text="Create New User" />
    </children>
 </AnchorPane>
