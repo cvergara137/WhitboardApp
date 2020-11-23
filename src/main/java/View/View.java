@@ -5,22 +5,24 @@
  */
 package View;
 
-import Controller.Controller;
+import Controller.LoginController;
+import Controller.WhiteboardController;
 
 /**
  *
  * @author cvcol
  */
 public class View {
-    private Controller controller;  
+    private WhiteboardController wcontroller;  
+    private LoginController lcontroller;
 //    private LoginFrameFX loginFX; 
 
-    public View(Controller controller) {
-        this.controller = controller; 
-//        loginFX = new LoginFrameFX();
+    public View(WhiteboardController wcontroller, LoginController lcontroller) {
+        wcontroller = this.wcontroller; 
+        lcontroller = this.lcontroller;
     }
 
-//    public Controller getController() {
+//    public WhiteboardController getController() {
 //        return controller;
 //    }
 //
@@ -28,7 +30,7 @@ public class View {
 //        return loginFX;
 //    }
 //
-//    public void setController(Controller controller) {
+//    public void setController(WhiteboardController controller) {
 //        this.controller = controller;
 //    }
 //

@@ -26,7 +26,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,8 +38,8 @@ import javafx.stage.StageStyle;
  *
  * @author cvcol
  */
-public class Controller {
-//    static final Logger logger = LogManager.getlogger(Controller.class);
+public class WhiteboardController {
+//    static final Logger logger = LogManager.getlogger(WhiteboardController.class);
 
     Model model;
     View view;
@@ -47,24 +49,21 @@ public class Controller {
     String user1 = "test";
     String pw1 = "test";
 
-    public Controller() {
+    public WhiteboardController() {
 //        logger.error("");
         model = new Model();
-        view = new View(this);
     }
 
-    public Controller(Model model, View view) {
+    public WhiteboardController(Model model, View view) {
         this.model = model;
         this.view = view;
-        usernames.add(user1);
-        passwords.add(pw1);
     }
 
     @FXML
     private Canvas canvas;
 
     @FXML
-    private ColorPicker Color;
+    private ColorPicker color;
 
     @FXML
     private TextField BrushSize;
@@ -73,55 +72,27 @@ public class Controller {
     private MenuItem Undo;
 
     @FXML
-    private Button Eraser;
+    private RadioButton Eraser;
 
-    @FXML
-    private Button Login;
-
-    @FXML
-    private TextField username;
-
-    @FXML
-    private PasswordField password;
-
-    @FXML
-    public void LoginListener(ActionEvent event) throws IOException {
-        if (username.getText().contains(user1) && password.getText().contains(pw1)) {
-            System.out.println("Valid user");
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WhiteboardFXML.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-//            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Whiteboard");
-            stage.setScene(new Scene(root1));
-            stage.show();
-            stage.setOnCloseRequest(e -> Platform.exit());
-        } else {
-            System.out.println("Invalid user");
-        }
-
-    }
-//    
+   
 //    public void onSave() { 
 //        try { 
 //            Image snapshot = canvas.
 //        } 
 
-    //method for implementing GraphicsContext class 
 
-    public void intialize() {
+    public void initialize() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
-
+                 
         canvas.setOnMouseDragged(e -> {
-            System.out.println("Test");
             double size = Double.parseDouble(BrushSize.getText());
             double x = e.getX() - size / 2;
             double y = e.getY() - size / 2;
 
-            if (Eraser.isPressed()) {
+            if (Eraser.isSelected()) {
                 gc.clearRect(x, y, size, size);
             } else {
-                gc.setFill(Color.getValue());
+                gc.setFill(color.getValue());
                 gc.fillRect(x, y, size, size);
             }
         });
@@ -184,11 +155,11 @@ public class Controller {
     }
 
     public ColorPicker getColor() {
-        return Color;
+        return color;
     }
 
-    public void setColor(ColorPicker Color) {
-        this.Color = Color;
+    public void setColor(ColorPicker color) {
+        this.color = color;
     }
 
     public TextField getBrushSize() {
@@ -207,36 +178,13 @@ public class Controller {
         this.Undo = Undo;
     }
 
-    public Button getLogin() {
-        return Login;
-    }
-
-    public void setLogin(Button Login) {
-        this.Login = Login;
-    }
-
-    public TextField getUsername() {
-        return username;
-    }
-
-    public void setUsername(TextField username) {
-        this.username = username;
-    }
-
-    public PasswordField getPassword() {
-        return password;
-    }
-
-    public void setPassword(PasswordField password) {
-        this.password = password;
-    }
-
-    public Button getEraser() {
+    public RadioButton getEraser() {
         return Eraser;
     }
 
-    public void setEraser(Button Eraser) {
+    public void setEraser(RadioButton Eraser) {
         this.Eraser = Eraser;
     }
+
 
 }

@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.Controller;
+import Controller.WhiteboardController;
 import java.awt.Color;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

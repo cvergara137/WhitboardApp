@@ -5,20 +5,20 @@
  */
 package Model;
 
-import Controller.Controller;
+import Controller.WhiteboardController;
 
 /**
  *
  * @author cvcol
  */
 public class Model {
-private Controller controller;  
+private WhiteboardController controller;  
 
-    public Controller getController() {
+    public WhiteboardController getController() {
         return controller;
     }
 
-    public void setController(Controller controller) {
+    public void setController(WhiteboardController controller) {
         this.controller = controller;
     }
 }
