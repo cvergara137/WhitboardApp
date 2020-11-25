@@ -8,12 +8,14 @@ package Controller;
 import Model.Model;
 import View.View;
 import View.WhiteboardFX;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 //import org.apache.logging.log4j.LogManager;
 import java.util.logging.Logger;
 import static javafx.application.ConditionalFeature.FXML;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,11 +30,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -74,16 +78,9 @@ public class WhiteboardController {
     @FXML
     private RadioButton Eraser;
 
-   
-//    public void onSave() { 
-//        try { 
-//            Image snapshot = canvas.
-//        } 
-
-
     public void initialize() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
-                 
+
         canvas.setOnMouseDragged(e -> {
             double size = Double.parseDouble(BrushSize.getText());
             double x = e.getX() - size / 2;
@@ -96,6 +93,19 @@ public class WhiteboardController {
                 gc.fillRect(x, y, size, size);
             }
         });
+    }
+
+    public void Exit() {
+        Platform.exit();
+    }
+
+    public void Save() {
+        try {
+            Image snapshot = canvas.snapshot(null, null);
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", new File("paint.png"));
+        } catch (Exception e) {
+            System.out.println("Failed to save image: " + e);
+        }
     }
 
     public Model getModel() {
@@ -185,6 +195,5 @@ public class WhiteboardController {
     public void setEraser(RadioButton Eraser) {
         this.Eraser = Eraser;
     }
-
 
 }
