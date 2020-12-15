@@ -1,41 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class is the controller for WhiteboardFXML file.
  */
 package Controller;
 
 import Model.Model;
 import View.View;
-import View.WhiteboardFX;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-//import org.apache.logging.log4j.LogManager;
-import java.util.logging.Logger;
-import static javafx.application.ConditionalFeature.FXML;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javax.imageio.ImageIO;
 
 /**
@@ -43,18 +25,14 @@ import javax.imageio.ImageIO;
  * @author cvcol
  */
 public class WhiteboardController {
-//    static final Logger logger = LogManager.getlogger(WhiteboardController.class);
 
+    //logger to display error for whiteboard controller
+    static final Logger logger = LogManager.getLogger(WhiteboardController.class);
     Model model;
     View view;
-    ArrayList<String> usernames = new ArrayList<String>();
-    ArrayList<String> passwords = new ArrayList<String>();
-
-    String user1 = "test";
-    String pw1 = "test";
 
     public WhiteboardController() {
-//        logger.error("");
+        logger.error("Unable to run WhiteboardController");
         model = new Model();
     }
 
@@ -63,6 +41,7 @@ public class WhiteboardController {
         this.view = view;
     }
 
+    //components for whiteboard screen
     @FXML
     private Canvas canvas;
 
@@ -78,6 +57,7 @@ public class WhiteboardController {
     @FXML
     private RadioButton Eraser;
 
+    //method for implementing drawing and erasing functionalties
     public void initialize() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
@@ -95,19 +75,22 @@ public class WhiteboardController {
         });
     }
 
+    //method for menu item to exit the program.
     public void Exit() {
         Platform.exit();
     }
 
+    //method for saving the drawing, however, I was unable to get this to work
     public void Save() {
         try {
             Image snapshot = canvas.snapshot(null, null);
-            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", new File("paint.png"));
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", new File("/images/paint.png"));
         } catch (Exception e) {
             System.out.println("Failed to save image: " + e);
         }
     }
 
+    //getters and setters
     public Model getModel() {
         return model;
     }
@@ -122,38 +105,6 @@ public class WhiteboardController {
 
     public void setView(View view) {
         this.view = view;
-    }
-
-    public ArrayList<String> getUsernames() {
-        return usernames;
-    }
-
-    public void setUsernames(ArrayList<String> usernames) {
-        this.usernames = usernames;
-    }
-
-    public ArrayList<String> getPasswords() {
-        return passwords;
-    }
-
-    public void setPasswords(ArrayList<String> passwords) {
-        this.passwords = passwords;
-    }
-
-    public String getUser1() {
-        return user1;
-    }
-
-    public void setUser1(String user1) {
-        this.user1 = user1;
-    }
-
-    public String getPw1() {
-        return pw1;
-    }
-
-    public void setPw1(String pw1) {
-        this.pw1 = pw1;
     }
 
     public Canvas getCanvas() {

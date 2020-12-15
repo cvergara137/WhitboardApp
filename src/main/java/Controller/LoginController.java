@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controller for Login Screen
  */
 package Controller;
 
@@ -19,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -28,33 +28,44 @@ public class LoginController {
 
     Model model;
     View view;
+
+    //ArrayLists for holding username and password.
     ArrayList<String> usernames = new ArrayList<String>();
     ArrayList<String> passwords = new ArrayList<String>();
+    static final Logger logger = LogManager.getLogger(LoginController.class);
 
+    //Only username test and password test allow for logging in.
     String user1 = "test";
     String pw1 = "test";
 
     public LoginController() {
+        //logger to report an error in login controlle.
+        logger.error("Unable to run LoginController");
         model = new Model();
     }
-    
-    public LoginController(Model model, View view) { 
-        this.model = model; 
-        this.view = view; 
+
+    public LoginController(Model model, View view) {
+        this.model = model;
+        this.view = view;
         usernames.add(user1);
         passwords.add(pw1);
-        
+
     }
-    
+
+    //Login screen components 
     @FXML
     private Button Login;
+
+    @FXML
+    private Button Create;
 
     @FXML
     private TextField username;
 
     @FXML
     private PasswordField password;
-    
+
+    //login screen listener to go to whiteboard screen
     @FXML
     public void LoginListener(ActionEvent event) throws IOException {
         if (username.getText().contains(user1) && password.getText().contains(pw1)) {
@@ -70,6 +81,18 @@ public class LoginController {
             System.out.println("Invalid user");
         }
 
+    }
+
+    //create new user listener button to go to create new user screen
+    @FXML
+    public void CreateNewUser(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateNewUserFXML.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Create New User");
+        stage.setScene(new Scene(root2));
+        stage.show();
+        stage.setOnCloseRequest(e -> Platform.exit());
     }
 
 }

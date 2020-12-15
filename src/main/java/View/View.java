@@ -1,42 +1,45 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * View class
  */
 package View;
 
 import Controller.LoginController;
 import Controller.WhiteboardController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
  * @author cvcol
  */
 public class View {
-    private WhiteboardController wcontroller;  
+
+    private WhiteboardController wcontroller;
     private LoginController lcontroller;
-//    private LoginFrameFX loginFX; 
+    static final Logger logger = LogManager.getLogger(View.class);
 
     public View(WhiteboardController wcontroller, LoginController lcontroller) {
-        wcontroller = this.wcontroller; 
+        wcontroller = this.wcontroller;
         lcontroller = this.lcontroller;
+        //logs error for view class
+        logger.error("Unable to run view class");
     }
 
-//    public WhiteboardController getController() {
-//        return controller;
-//    }
-//
-//    public LoginFrameFX getLoginFX() {
-//        return loginFX;
-//    }
-//
-//    public void setController(WhiteboardController controller) {
-//        this.controller = controller;
-//    }
-//
-//    public void setLoginFX(LoginFrameFX loginFX) {
-//        this.loginFX = loginFX;
-//    }
-//
+    //getters and setters
+    public WhiteboardController getWcontroller() {
+        return wcontroller;
+    }
+
+    public void setWcontroller(WhiteboardController wcontroller) {
+        this.wcontroller = wcontroller;
+    }
+
+    public LoginController getLcontroller() {
+        return lcontroller;
+    }
+
+    public void setLcontroller(LoginController lcontroller) {
+        this.lcontroller = lcontroller;
+    }
 
 }
